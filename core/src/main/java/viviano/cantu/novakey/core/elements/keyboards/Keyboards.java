@@ -35,7 +35,7 @@ public class Keyboards {
 
     public static final int SYMBOLS = -2;
     public static final int PUNCTUATION = -1;
-    public static final int DEFAULT = 0;
+    public static final int DEFAULT = 1;
 
     private final Keyboard mSymbols, mPunctuation;
     private final List<Keyboard> mLanguages;
@@ -49,6 +49,7 @@ public class Keyboards {
 
         mLanguages = new ArrayList<>();
         mLanguages.add(new Keyboard("English", convert(R.array.English, res)));
+		mLanguages.add(new Keyboard("German", convert(R.array.German, res)));
     }
 
 
