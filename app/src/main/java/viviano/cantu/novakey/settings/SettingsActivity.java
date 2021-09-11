@@ -26,6 +26,7 @@ import android.os.Bundle;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
 
+import viviano.cantu.novakey.BuildConfig;
 import viviano.cantu.novakey.MainNovaKeyService;
 import viviano.cantu.novakey.core.utils.Colors;
 import viviano.cantu.novakey.core.model.Settings;
@@ -49,8 +50,8 @@ public class SettingsActivity extends PreferenceActivity {
         Font.create(getApplicationContext());
         Icons.load(getApplicationContext());
 
-        Settings.setPrefs(PreferenceManager.getDefaultSharedPreferences(getApplicationContext()));
-        Settings.update();
+        Settings.setPrefs(PreferenceManager.getDefaultSharedPreferences(getApplicationContext()), BuildConfig.VERSION_CODE);
+        Settings.update(BuildConfig.VERSION_CODE);
 
         if (!pref.getBoolean("has_setup", false)) {
             startActivity(new Intent(this, SetupActivity.class));

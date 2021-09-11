@@ -78,17 +78,17 @@ public class Settings {
     private static SharedPreferences.Editor edit;
 
 
-    public static void setPrefs(SharedPreferences pref) {
+    public static void setPrefs(SharedPreferences pref, final int versionCode) {
         prefs = pref;
         edit = prefs.edit();
-        prefs.registerOnSharedPreferenceChangeListener((sharedPreferences, s) -> update());
+        prefs.registerOnSharedPreferenceChangeListener((sharedPreferences, s) -> update(versionCode));
     }
 
 
     /**
      * Pulls all values from the shared preferences & updates the static fields
      */
-    public static void update() {
+    public static void update(final int versionCode) {
         //Boolean Flag settings
         hideLetters = prefs.getBoolean(pref_hide_letters, false);
         hidePassword = prefs.getBoolean(pref_hide_password, false);
@@ -104,8 +104,8 @@ public class Settings {
 
         //Integer settings
         //this will only default to the given number if the person has never had this preference
-        startVersion = prefs.getInt(pref_start_version, BuildConfig.VERSION_CODE);
-        if (startVersion == BuildConfig.VERSION_CODE)
+        startVersion = prefs.getInt(pref_start_version, versionCode);
+        if (startVersion == versionCode)
             edit.putInt(pref_start_version, startVersion);
 
         longPressTime = prefs.getInt(pref_long_press_time, 500);

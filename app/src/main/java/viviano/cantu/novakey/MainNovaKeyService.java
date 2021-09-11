@@ -39,6 +39,7 @@ import android.view.inputmethod.InputConnection;
 import java.util.ArrayList;
 import java.util.List;
 
+import viviano.cantu.novakey.BuildConfig;
 import viviano.cantu.novakey.core.Clipboard;
 import viviano.cantu.novakey.core.controller.Controller;
 import viviano.cantu.novakey.core.controller.Corrections;
@@ -114,7 +115,7 @@ public class MainNovaKeyService extends NovaKeyService {
         mWindows = new ArrayList<>();
 
         //Controller creation
-        mController = new Controller(this);
+        mController = new Controller(this, BuildConfig.VERSION_CODE);
 
         //Shared Preferences for setup activity //TODO: change this
         Editor temp = getApplicationContext().getSharedPreferences(MainNovaKeyService.MY_PREFERENCES, MODE_PRIVATE).edit();

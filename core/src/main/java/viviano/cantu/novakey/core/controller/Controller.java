@@ -66,7 +66,7 @@ public class Controller implements Gun, View.OnTouchListener {
      *
      * @param ime the input method service
      */
-    public Controller(NovaKeyService ime) {
+    public Controller(NovaKeyService ime, final int versionCode) {
         // context
         mIME = ime;
 
@@ -86,8 +86,8 @@ public class Controller implements Gun, View.OnTouchListener {
         //Create Clipboard Menu
         Clipboard.createMenu();
         //Initialize setting
-        Settings.setPrefs(PreferenceManager.getDefaultSharedPreferences(ime));
-        Settings.update();
+        Settings.setPrefs(PreferenceManager.getDefaultSharedPreferences(ime), versionCode);
+        Settings.update(versionCode);
 
 
         // model
